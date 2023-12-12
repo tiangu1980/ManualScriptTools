@@ -1,0 +1,14 @@
+sudo su
+service clickhouse-server start
+ulimit -n 65536
+/etc/trino-server/bin/launcher start  (run for logs on screen)
+
+Local:
+/etc/trino --server localhost:8080 --catalog clickhouse --schema default
+/etc/trino --catalog clickhouse --schema default
+
+Web:
+http://localhost:8080
+https://localhost:8443
+
+

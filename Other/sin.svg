@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="500" height="200">
+    <!-- 绘制坐标轴 -->
+    <line x1="0" y1="100" x2="500" y2="100" stroke="black" stroke-width="2" />
+    <line x1="0" y1="0" x2="0" y2="200" stroke="black" stroke-width="2" />
+
+    <!-- 绘制正弦函数曲线 -->
+    <path fill="none" stroke="blue" stroke-width="2" d="M0,100
+        C50,20 150,180 200,100
+        C250,20 350,180 400,100
+        C450,20 500,180 500,100" />
+</svg>

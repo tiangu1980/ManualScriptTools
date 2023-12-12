@@ -1,0 +1,82 @@
+docker superset
+https://hub.docker.com/r/apache/superset
+
+docker pull apache/superset
+
+docker stop superset
+docker rm superset
+
+
+docker run -d -p 8088:8088 \
+    -e SUPERSET_SECRET_KEY=12345678 \
+    --name superset \
+    apache/superset
+
+6d0041608510e792a00cbc32920d58cb513b1c32115706e5cbf00ecb66313f30
+
+docker start superset
+
+docker exec -it superset /bin/bash
+
+superset fab create-admin \
+  --username test \
+  --password 12345678 \
+  --firstname test \
+  --lastname me \
+  --email test@example.com
+
+exit
+
+ docker exec -it superset superset db upgrade
+ 
+ docker exec -it superset superset load_examples
+ 
+ docker exec -it superset superset init
+docker exec -it superset superset init 这条命令的作用是初始化 Apache Superset。具体来说，它执行以下操作：
+
+创建 Superset 数据库：该命令会创建 Superset 所需的数据库表，用于存储仪表板、数据源、查询等相关信息。
+
+创建管理员用户：命令会提示你创建一个管理员用户，以便你可以登录并管理 Superset。
+
+初始化权限和角色：它会设置与 Superset 相关的权限和角色，以确保用户在 Superset 中的操作受到适当的控制。
+
+安装示例仪表板和示例数据：它还会提供一些示例仪表板和示例数据，以便你可以更快地开始使用 Superset。
+
+这个命令通常在你首次启动 Superset 时执行，以准备好 Superset 环境并提供管理权限。一旦初始化完成，你可以登录 Superset 管理界面并开始创建自己的仪表板、数据源等。
+
+请注意，如果你已经初始化过一次 Superset，通常情况下不需要再次运行 superset init，除非你希望重新初始化整个系统。
+
+
+
+ 
+
+要将 Apache Superset 连接到本地 Trino 服务器，你需要进行以下步骤：
+
+确定 Trino 服务器的主机和端口:
+确保你知道本地 Trino 服务器的主机和端口号。默认情况下，Trino 使用 localhost:8080 作为主机和端口。确保 Trino 服务器正在运行。
+
+登录到 Superset 管理界面:
+使用你的管理员帐户登录到 Superset 管理界面。通常，你可以访问 http://localhost:8088 来登录。
+
+添加数据库连接:
+在 Superset 管理界面中，导航到 "Sources"（数据源） > "Databases"（数据库）。
+
+点击 "加号" 添加数据库连接:
+点击页面右上角的 "+" 按钮以添加新的数据库连接。
+
+配置 Trino 连接:
+在 "Database" 部分，输入以下信息以配置 Superset 连接到 Trino 服务器：
+
+Database名称: 为连接起一个名称，例如 "My Trino"。
+SQL Lab 查询编译器: 选择 "Trino"。
+主机: 输入本地 Trino 服务器的主机名或 IP 地址。
+端口: 输入 Trino 服务器的端口号（默认为 8080）。
+用户名: 输入连接 Trino 服务器所需的用户名（在 Trino 配置中设置的用户名）。
+密码: 输入用户的密码（在 Trino 配置中设置的密码）。
+测试连接:
+点击 "Test Connection"（测试连接）按钮，以确保 Superset 可以成功连接到 Trino 服务器。
+
+保存连接:
+如果测试成功，点击 "Save"（保存）按钮，以保存数据库连接配置。
+
+现在，你已经成功配置了 Superset 与本地 Trino 服务器的连接。你可以在 Superset 中创建数据源、数据集和仪表板，并使用 Trino 查询和可视化你的数据。
