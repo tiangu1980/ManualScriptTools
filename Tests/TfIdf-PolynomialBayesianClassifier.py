@@ -5,6 +5,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import LabelEncoder
 import numpy as np
 import os
+import sys
 import joblib
 import re
 
@@ -148,8 +149,19 @@ def work_model(work_file, model_file):
         print("Error: Model file not found. Please run in train mode first.")
 
 if __name__ == "__main__":
-    mode = input("Enter mode (train or work): ").lower()
-    input_file = input("Enter input file path (xlsx): ")
+    #mode = input("Enter mode (train or work): ").lower()
+    #input_file = input("Enter input file path (xlsx): ")
+    
+    if len(sys.argv)<3 :
+        print("Invalid argv lengh.")
+        exit()
+        
+    mode=sys.argv[1]
+    input_file=sys.argv[2]
+    
+    if not os.path.exists(input_file):
+        print("Data file is not exists.")
+        exit()
 
     if mode == "train":
         model_file = "text_classifier_model.joblib"
@@ -160,3 +172,4 @@ if __name__ == "__main__":
         work_model(input_file, model_file)
     else:
         print("Invalid mode. Please enter 'train' or 'work'.")
+        exit()
