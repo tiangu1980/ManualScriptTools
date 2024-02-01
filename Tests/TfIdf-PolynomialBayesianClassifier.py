@@ -3,6 +3,7 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.naive_bayes import MultinomialNB
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import LabelEncoder
+import numpy as np
 import os
 import joblib
 import re
@@ -44,29 +45,78 @@ def preprocess_text(text):
 
     return text
 
+#def train_model(train_file, model_file):
+#    # 读取训练数据
+#    df = pd.read_excel(train_file, names=['Text', 'L3'])
+#
+#    # 填充空单元格
+#    df = df.fillna('No')
+#
+#    # 对文本进行预处理
+#    df['Text'] = df['Text'].apply(preprocess_text)
+#
+#    # 划分训练集和测试集
+#    X_train, X_test, y_train, y_test = train_test_split(df['Text'], df['L3'], test_size=0.2, random_state=42)
+#
+#    # TF-IDF特征提取
+#    vectorizer = TfidfVectorizer()
+#    X_train_tfidf = vectorizer.fit_transform(X_train)
+#    
+#    # 初始化并训练多项式贝叶斯分类器
+#    classifier = MultinomialNB()
+#    classifier.fit(X_train_tfidf, y_train)
+#
+#    # 保存模型
+#    joblib.dump((vectorizer, classifier), model_file)
+
 def train_model(train_file, model_file):
-    # 读取训练数据
-    df = pd.read_excel(train_file, names=['Text', 'L3'])
+    # 检查模型文件是否已存在
+    if os.path.exists(model_file):
+        # 如果存在，加载模型
+        vectorizer, classifier = joblib.load(model_file)
+        
+        # 读取训练数据
+        df = pd.read_excel(train_file, names=['Text', 'L3'])
 
-    # 填充空单元格
-    df = df.fillna('No')
+        # 填充空单元格
+        df = df.fillna('')
 
-    # 对文本进行预处理
-    df['Text'] = df['Text'].apply(preprocess_text)
+        # 对文本进行预处理
+        df['Text'] = df['Text'].apply(preprocess_text)
 
-    # 划分训练集和测试集
-    X_train, X_test, y_train, y_test = train_test_split(df['Text'], df['L3'], test_size=0.2, random_state=42)
+        # 划分训练集和测试集
+        X_train, X_test, y_train, y_test = train_test_split(df['Text'], df['L3'], test_size=0.2, random_state=42)
 
-    # TF-IDF特征提取
-    vectorizer = TfidfVectorizer()
-    X_train_tfidf = vectorizer.fit_transform(X_train)
-    
-    # 初始化并训练多项式贝叶斯分类器
-    classifier = MultinomialNB()
-    classifier.fit(X_train_tfidf, y_train)
+        # TF-IDF特征提取
+        X_train_tfidf = vectorizer.transform(X_train)
+        
+        # 继续训练模型
+        classifier.partial_fit(X_train_tfidf, y_train) #, classes=np.unique(df['L3']))
+    else:
+        # 如果模型不存在，新建模型
+        df = pd.read_excel(train_file, names=['Text', 'L3'])
+
+        # 填充空单元格
+        df = df.fillna('')
+
+        # 对文本进行预处理
+        df['Text'] = df['Text'].apply(preprocess_text)
+
+        # 划分训练集和测试集
+        X_train, X_test, y_train, y_test = train_test_split(df['Text'], df['L3'], test_size=0.2, random_state=42)
+
+        # TF-IDF特征提取
+        vectorizer = TfidfVectorizer()
+        X_train_tfidf = vectorizer.fit_transform(X_train)
+
+        # 初始化并训练多项式贝叶斯分类器
+        classifier = MultinomialNB()
+        classifier.fit(X_train_tfidf, y_train)
 
     # 保存模型
     joblib.dump((vectorizer, classifier), model_file)
+
+
 
 def work_model(work_file, model_file):
     if os.path.exists(model_file):
