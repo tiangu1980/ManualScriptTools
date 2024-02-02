@@ -1,6 +1,6 @@
 @echo off
 
-:: TfIdf-PolynomialBayesianClassifier_Train.bat 300 SAT-DSAT-Lable-train.xlsx SAT-DSAT-L1
+:: TfIdf-PolynomialBayesianClassifier_Train.bat  100 DSAT1to1Full_Train.xlsx DSAT-L3
 
 :: 检查是否提供了足够的参数
 if not %1.==. goto :check_file
@@ -16,8 +16,8 @@ if not exist %2 (
 
 :: 使用 for /l 循环执行指定次数的命令，每轮循环延时1秒
 for /l %%i in (1, 1, %1) do (
-    python TfIdf-PolynomialBayesianClassifier.py --mode train --infile %2  --model %3 --incols "SAT" "DSAT" --merge but --target L1
-    echo python TfIdf-PolynomialBayesianClassifier.py --mode train --infile %2  --model %3 --incols "SAT" "DSAT" --merge but --target L1 - Iteration %%i
+    python TfIdf-PolynomialBayesianClassifier.py train %2 %3
+    echo Ran python TfIdf-PolynomialBayesianClassifier.py train %2 %3 - Iteration %%i
     timeout /nobreak /t 1 >nul
 )
 
