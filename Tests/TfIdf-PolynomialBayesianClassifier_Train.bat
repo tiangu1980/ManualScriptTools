@@ -1,24 +1,25 @@
+:: python TfIdf-PolynomialBayesianClassifier.py --mode train --infile SAT-DSAT-Lable-train.xlsx --model SAT-L5 --incols "SAT" --merge but --target L5
+
 @echo off
+setlocal enabledelayedexpansion
 
-:: TfIdf-PolynomialBayesianClassifier_Train.bat 300 SAT-DSAT-Lable-train.xlsx SAT-DSAT-L1
+REM 获取调用对象脚本的次数
+set calls=%1
+shift
 
-:: 检查是否提供了足够的参数
-if not %1.==. goto :check_file
-echo Usage: %0 <number_of_times> <file_name>
-goto :eof
-
-:check_file
-:: 检查文件是否存在
-if not exist %2 (
-    echo File %2 does not exist. Exiting.
-    goto :eof
+REM 将第二个参数开始的所有内容保存为变量 mycmd
+set "mycmd=python"
+:build_mycmd
+if not "%2"=="" (
+    set "mycmd=!mycmd! %2"
+    shift
+    goto build_mycmd
 )
 
-:: 使用 for /l 循环执行指定次数的命令，每轮循环延时1秒
-for /l %%i in (1, 1, %1) do (
-    python TfIdf-PolynomialBayesianClassifier.py --mode train --infile %2  --model %3 --incols "SAT" "DSAT" --merge but --target L1
-    echo python TfIdf-PolynomialBayesianClassifier.py --mode train --infile %2  --model %3 --incols "SAT" "DSAT" --merge but --target L1 - Iteration %%i
-    timeout /nobreak /t 1 >nul
+REM 运行 mycmd 命令 calls 次
+for /l %%i in (1,1,%calls%) do (
+    echo %%i / %calls% Running： %mycmd%
+    !mycmd!
 )
 
-echo Finished run cmd for %1 times
+endlocal

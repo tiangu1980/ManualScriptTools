@@ -69,7 +69,7 @@ def train_model(train_file, model_file_arg, incols, merge, target):
             colName2=incols[1]
             df['InText'] = df.apply(lambda row: str(row[colName1]) + merge + str(row[colName2]), axis=1)
         else:
-            df['InText'] = df[incols[0]]
+            df['InText'] = df[colName1]
         
         df['InLable'] = df[target]
 
@@ -98,7 +98,7 @@ def train_model(train_file, model_file_arg, incols, merge, target):
             colName2=incols[1]
             df['InText'] = df.apply(lambda row: str(row[colName1]) + merge + str(row[colName2]), axis=1)
         else:
-            df['InText'] = df[incols[0]]
+            df['InText'] = df[colName1]
         
         df['InLable'] = df[target]
 
@@ -132,13 +132,14 @@ def work_model(work_file, model_file_arg, incols, merge, target):
 
         # 填充空单元格
         df_work = df_work.fillna(' ')
+        print(len(df_work))
         
         colName1=incols[0]
         if len(incols)>1 :
             colName2=incols[1]
             df_work['InText'] = df_work.apply(lambda row: str(row[colName1]) + merge + str(row[colName2]), axis=1)
         else:
-            df_work['InText'] = df_work[incols[0]]
+            df_work['InText'] = df_work[colName1]
 
         # 对文本进行预处理
         df_work['InText'] = df_work['InText'].apply(preprocess_text)
@@ -207,6 +208,7 @@ if __name__ == "__main__":
         exit()
 
     mode = args.mode
+    print(f" --mode {mode} --infile {infile} --model {model_file_arg} --incols{incols} --merge{merge} --target {target}")
     if mode == "train":
         train_model(infile, model_file_arg, incols, merge, target)
         print(f"Model trained and saved to {model_file_arg}")
