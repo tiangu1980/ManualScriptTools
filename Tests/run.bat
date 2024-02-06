@@ -1,6 +1,0 @@
-call TfIdf-PolynomialBayesianClassifier_Train.bat 1000 python TfIdf-PolynomialBayesianClassifier.py --mode train --infile SAT-DSAT-Lable-train.xlsx --model SAT-L5 --incols "SAT" --merge but --target L5
-call TfIdf-PolynomialBayesianClassifier_Train.bat 1000 python TfIdf-PolynomialBayesianClassifier.py --mode train --infile SAT-DSAT-Lable-train.xlsx --model DSAT-L6 --incols "DSAT" --merge but --target L6
-call TfIdf-PolynomialBayesianClassifier_Train.bat 1000 python TfIdf-PolynomialBayesianClassifier.py --mode train --infile SAT-DSAT-Lable-train.xlsx --model DSAT-L4 --incols "DSAT" --merge but --target L4
-call TfIdf-PolynomialBayesianClassifier_Train.bat 1000 python TfIdf-PolynomialBayesianClassifier.py --mode train --infile SAT-DSAT-Lable-train.xlsx --model DSAT-L3 --incols "DSAT" --merge but --target L3
-call TfIdf-PolynomialBayesianClassifier_Train.bat 1000 python TfIdf-PolynomialBayesianClassifier.py --mode train --infile SAT-DSAT-Lable-train.xlsx --model SAT-DSAT-L2 --incols "SAT"  "DSAT" --merge but --target L2
-call TfIdf-PolynomialBayesianClassifier_Train.bat 1000 python TfIdf-PolynomialBayesianClassifier.py --mode train --infile SAT-DSAT-Lable-train.xlsx --model SAT-DSAT-L1 --incols "SAT"  "DSAT" --merge but --target L1

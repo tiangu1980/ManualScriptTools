@@ -1,0 +1,366 @@
+AzurePortal		nothing. still learning	4	0	0	0	0
+Studio		The text-to-speech batch synthesis API recently output a tone that was suddenly completely different from the past. The one I chose was: zh-CN-XiaochenNeural. I was unable to obtain technical support, which seriously affected my business;	2	1	13	14	0
+Studio	Its ease of use.	it's excellent.	5	0	0	0	15
+Studio	Just started testing	Training on polyphonic characters needs to be strengthened	2	1	2	2	18
+AzurePortal		I am lost	4	0	0	0	0
+AzurePortal	its cool	easier	4	0	0	0	18
+AzurePortal	Range of features & relatively straightforward pricing	It's frustrating having to apply to use some features, e.g. Personal Voice	8	1	3	15	9
+Studio	Variety of voices, easy view of all files, export is user friendly	Would love some suggested intonations- or at least to make that easier bit more user friendly when creating  audio content	2	1	2	2	7
+AzurePortal		I applied for a container on the edge, but I did not receive a reply.	4	0	0	0	0
+AzurePortal		Cool	5	0	0	0	0
+AzurePortal		divided into roles	4	0	0	0	0
+Studio	easy handling	If you select a speaker and then type a letter or word and then delete it again, the selected speaker will also be deleted. This is sometimes very annoying. Here it would be good if you had to press the delete key again to remove the speaker. This is particularly annoying when you want to start the sentence differently.	2	1	11	16	15
+Studio	There is a "template" setting, which can save a lot of actions.	"Can the audio file downloaded from the file be named according to the content of the converted file?
+You can keep the serial number in the front and add the converted content as the name."	2	1	11	16	13
+AzurePortal	FUNCTION IS WONDERFUL	Speech Services IS PERFECT，HOWEVER I SPENT ALMOST ONE DAY TO FIND THIS SERVICE AND SET IT UP.	8	1	3	15	2
+Studio	No	ok	5	0	0	0	18
+AzurePortal	waiting	I haven't used it yet, I'll give it a try first	4	0	0	0	18
+Studio	Not sure, because I feel that its effect is not very stable. Sometimes the effect is very good, and sometimes it is weird.	I want to know how to choose a payment method. I called customer service but still don't understand	7	1	6	13	18
+Studio	Rich voice library	More phonetic libraries for Cantonese	2	1	12	7	22
+Studio		My region is not supported for some of the most interesting and exciting new services.  The Eastern US shouldn't be excluded from innovation.	4	0	0	0	0
+Studio		personal voice not available	2	0	18	18	0
+AzurePortal	anything	Not easy to handle.	8	1	3	15	18
+AzurePortal	I don't know him yet	Not very easy for those who don't know the system	8	1	3	15	18
+AzurePortal	so far nothing	I did not manage to carry out a single speech to text project	4	0	0	0	18
+AzurePortal	natural speech	The processing of polyphonic Chinese characters needs to be improved.	2	1	2	2	2
+AzurePortal		i was trying to find my subscriptions to add speech services and it was the hardest thing to do.	8	1	3	15	0
+Studio		I would like more voices, or more emotions in voices from Brazil (Portuguese-Brazil)	2	1	12	7	0
+Studio		Very confusing information.	6	1	3	15	0
+AzurePortal		right now nothing	4	0	0	0	0
+AzurePortal		fine	5	0	0	0	0
+AzurePortal	The quality of services is spectacular	Many clicks to do little.	4	0	0	0	2
+AzurePortal	anything	tangled up	4	0	0	0	18
+AzurePortal	I have only used it for less than 5 hours so far, and it still needs time.	"Can the file name of the downloaded file be the same as the content instead of the serial number?
+For example, the first word of the converted file is apple
+Then the downloaded file name should be 1.apple
+Simply providing the serial number makes it difficult to know what the content is at a glance. You can only know it by clicking on it.
+If I have 1,000 files to process, it’s impossible to click on them all."	2	1	11	16	18
+Studio	Various options in Latin dialects	None by the moment	4	0	0	0	7
+Studio	speed and ease	"not have western avatars.
+not being able to export just the audio"	4	0	0	0	15
+Studio	Realistic, fast generation, free	You can insert silence yourself	4	0	0	0	2
+Studio	Speaks more like a human	Automatically recognize characters and tone in radio drama scripts	2	1	2	2	2
+AzurePortal		I can't see where the text to speech character usage is	7	1	6	13	0
+Studio		Still testing	4	0	0	0	0
+AzurePortal	Nothing in specific	Every month there is a payment problem and I have to change my card	8	1	8	10	18
+Studio	Nothing right now.	Ability to upload a sample and try it not working.	6	1	8	10	18
+AzurePortal	Fastest to choose.	Expensive it is!	8	15	17	9	6
+AzurePortal	Powerful	Easy to use	5	0	0	0	18
+AzurePortal	onomatopoeia	No experience yet	4	0	0	0	2
+AzurePortal	Speed ​​of response	"When creating a Japanese custom speech model, the pronunciation data is not compatible.
+In Japanese, even the same letters can have different pronunciations, so I would like this to be supported in Japanese as well."	2	1	1	2	6
+AzurePortal	sound selectivity	This feature should be completely free rather than charged	5	0	0	0	22
+Studio	many languages	none	4	0	0	0	7
+Studio		too expensive	8	15	17	9	0
+Studio		I started using it very recently, I still haven't handled it enough to verify if it works correctly.	4	0	0	0	0
+Studio		crashes from time to time	4	0	0	0	0
+Studio		There's something wrong with Xiaochen's voice. It sounds very different from before.	2	1	2	2	0
+AzurePortal		Simple to set up and easy to use	5	0	0	0	0
+AzurePortal	The audio	is very good	5	0	0	0	2
+AzurePortal	Hhhjk	Mr	4	0	0	0	18
+AzurePortal	anything	The setup is frustrating.	8	1	3	15	18
+Studio	Simplicity.	Lack of Belarusian language	2	1	12	7	15
+Studio	Be able to create it in a conversational format.	I am dissatisfied with the fact that some voices have unnatural pauses and some voices have uncontrolled intonation. Also, it is incorrect that the stress of a compound noun is placed on the noun after it. Please improve the voice quality of British and Australian accents to match American ones.	2	1	2	2	15
+AzurePortal	voice	Web page operation is too complicated	8	1	3	15	2
+AzurePortal		cannot move subscription	8	1	3	15	0
+AzurePortal		Too inconvenient	8	1	3	15	0
+AzurePortal	not really, the response seems slow to me	auto translate as well	5	0	0	0	18
+AzurePortal	nothing	I just want to hear the voices. I'm 80 minutes in and not even heard a voice yet. Every other speech service you just click a link on the home page and hear examples. Yours... I have no clue no search got me there and I've now jumped through too many hoops. Even though I have free credits I will not be using this.	8	1	3	15	18
+Studio	Sound quality	Need to make it faster. How can I do it.	6	1	9	6	2
+Studio	The voice is the same as a real person	More intonation and tone	2	1	2	2	2
+AzurePortal		free	5	0	0	0	0
+AzurePortal		The cost is a tad prohibitive and it isn't super straight forward	8	15	17	9	0
+Studio	ease of use	we need more voices in bulgarian!	2	1	12	7	15
+AzurePortal	SSML is a great way to configure the voices. The SDK is easy to plug in.	Better ability to control the audio playback in the TypeScript SDK. How can we stop it sooner? How can we sync it with some visuals? Would like more realistic voice options like Whisper provides.	2	1	2	2	15
+Studio	Very powerful.	Its hard to figure out how to add accents to my python script for the voices.  Not sure where to find it.	7	1	6	13	14
+Studio	Powerful voice library	Overall feeling great	5	0	0	0	18
+Studio	I don’t know if there are any test voices yet.	I failed to upload the voice file. I have uploaded it multiple times. The interface interaction is not friendly to Chinese people and is worse than Apple. After successful registration, I cannot enter the interface to browse. When I came up, I was asked to bind a credit card.	6	1	3	15	18
+Studio		would be nice if the quality was good as evelenlabs	2	1	2	2	0
+AzurePortal		Better, more accessible documentation	7	1	7	13	0
+AzurePortal		The creation process is a bit cumbersome	8	1	3	15	0
+Studio	intelligent	None yet	4	0	0	0	2
+Studio	haven't been able to use it yet	how do get to use this? why can't you keep a recognizable end-point? and why is the URL embedded in the API itself?	2	1	11	16	18
+Studio		[Education Edition] Whenever I need to use/try out certain resources, such as training custom voices, I need to create some resources first. There are a lot of cumbersome steps that make it difficult to use the service smoothly!	6	1	3	15	0
+Studio		service too complicated	6	1	3	15	0
+AzurePortal		Can support speech synthesis in various local dialects	2	1	2	2	0
+Studio		Still in use	4	0	0	0	0
+Studio	easy to use	More realistic voices	2	1	2	2	15
+Studio	easy to use without much coding experience.	i would like more British accents with the realism and natural cadence/emphasis of the new US models	2	1	12	7	15
+Studio	Ease of use	Difficulty finding the service page	6	1	3	15	15
+Studio	How dang easy it is to use.	Would LOVE to see closed caption timing for TTS.  I'm in education, and we need a transcript or captions for every audio element.  A standard closed caption file would be my 1st choice.	2	1	11	16	15
+AzurePortal	Easy to use. The voices have a better quality than other services.	"The voice quality in Spanish is good but I think it should be improved even more to sound more natural and be clearer.
+More granularity in the permissions and subservices within SpeechServices that are allowed access.
+Include more tone of voice options in Spanish.
+Transcription of text to speech in real time, to be able to use it as a reading service on the web pages of a portal."	2	1	2	2	15
+AzurePortal	No. For beginners, a bunch of unknown "resources" must be created before using all services, which is very annoying!	Before using the service, you need to create a bunch of "resources", but what are the differences and impacts of the various settings in the "resources", what are the restrictions on future use whether free or standard, whether the region further affects service access and usage rights, etc. The above officials do not provide information and teaching in advance.	7	1	6	13	18
+AzurePortal		containers are not functional to test in Lab	4	0	0	0	0
+Studio		Very good	5	0	0	0	0
+AzurePortal	dgd	fgfg	4	0	0	0	18
+Studio	language ease and speaker fluency	The configuration should be more practical, I spent 20 minutes trying to get to the application	6	1	3	15	15
+Studio		Using TTS in Greek, some words will randomly be pronounced with their first letter as the name of the letter and then the rest of the word	2	1	8	10	0
+Studio	It will be all right	Hope there are more Chinese voices	2	1	12	22	18
+AzurePortal		After doing all setup i was told i dont have access. What stupid system you have.	8	1	3	15	0
+Studio	I think the speech studio is a nice way to organize and modify speech scripts.  Although the flow could be a little smother and more intuitive.	I'd like the speech to be a little more natural and provide options for a chuckle, laugh, sigh and like emotional expressions.	2	1	2	2	2
+AzurePortal		Service does not work properly	4	0	0	0	0
+AzurePortal		Accessing the website is so slow	8	1	9	6	0
+Studio	easy to use	more of the better voices	2	1	12	22	15
+Studio	Easy to use. I mainly use text-to-speech.	It would be nice to have a keyboard shortcut for Play in the Speech Studio.	6	1	11	16	15
+Studio	"Love that the UI is clean, simple and intuitive and that I have access to my files at all times.
+
+The speech quality is also the best I have been able to find."	"Using the different styles often makes the voice sounds like it belongs to a completely different person.
+
+Applying intonation can be fiddly at times if there is also variations in speech rate applied. Hard to select just the right section.
+
+Would like option for breathing sounds / staggered breath.
+
+Rythm parameter. I find I have to manually add a lot of speech rate variations to make it sound more natural or achieve certain effetcs. Would be a huge time saver if this could be automated.
+
+Loudness/force parameter - the volume is simple turning the volume up and down and doesn't imitate someone speaking software / louder.
+
+keyboard shortcuts - way too much clicking around with the mouse!
+
+Saving presets as characters. When creating narrations with a single voice that is supposed to imitate different characters this would be handy. Google has a nice way of doing this in their new auto narration service (although the quality of that is pretty bad)."	2	1	2	2	15
+Studio	Possibility to have different voices in one request	Quality of voices can be better.	2	1	2	2	22
+Studio	your free services	I can't understand the documentations	7	1	7	13	9
+Studio	todooooooooo	more voices in Spanish =)	2	1	12	7	18
+Studio	saves time	"pronounce acronyms properly
+preset of words that you use frequently
+""predictive"" text/text suggestions?"	2	1	11	16	6
+Studio	The sound quality is ahead of its peers	Cumbersome operation	6	1	3	15	2
+Studio		It's not working.  Just showing 401 auth errors.  No alternative using CLI.	6	1	8	10	0
+Studio		Not working - showing 401 errors	6	1	8	10	0
+Studio		Too slow	6	1	9	6	0
+Studio		System crashes often occur when using it.	6	1	8	10	0
+AzurePortal		cumbersome	8	1	3	15	0
+AzurePortal	I'm watching	Anything	4	0	0	0	18
+AzurePortal	it allows me to talk with my ai	unppealing	4	0	0	0	18
+AzurePortal	Relative ease of use	The relatively high price for using the speech synthesis service is frustrating. Preferably free	8	15	17	9	15
+AzurePortal	ease of use	more voices in Portuguese	2	1	2	22	15
+AzurePortal		It has suddenly stopped working completely. I have thousands of users who can no longer use my product, because for some reason your service no longer works - yet does not provide any errors or indications that it is not working. I have not changed anything in my product, but suddenly the entire speech to text service does not work. My users noticed before I did. I will potentially switch to AWS because of this as it is a very serious issue and it is may in fact ruin my products reputation.	8	1	8	10	0
+Studio		Adapt to more browsers	3	1	13	17	0
+Studio	Good voices, very natural.	Clearer help.	7	1	7	13	2
+Studio	A LITTLE OF EVERYTHING	MORE CHARACTERS IN THE AUDIO	2	1	2	2	18
+AzurePortal	anything	I couldn't even test it	4	0	0	0	18
+Studio	quality	I am missing download capability of training data.	7	1	6	13	2
+AzurePortal		Text-to-speech is real	5	0	0	0	0
+Studio		Character total is inaccurate	2	1	8	10	0
+Studio	The best among all the TTS services I have tried.	The intonation is hard to adjust. There are lots of misplaced stresses which is really hard to correct using current tools. If there is a way to mark wich word/words should be stressed and the TTS just follow that pattern, that would be so much better.	2	1	11	16	2
+Studio	text-to-speech, voice cloning	There are more character voices to choose from, and more different voice styles.	2	1	12	22	2
+Studio	which is free, the quality is higher than the voices I already had before.	"The comma (,) and the semicolon (;) and the colon (:) are pronounced identically, and are different signs. It took me forever to replace the semicolons (;) with periods (.), for the audio to make sense.
+
+The columns still cannot be modified in size or width; It would also be good to be able to remove columns that you do not use.
+
+Sometimes it gives strange errors, which you don't know what they are, the other day he told me that I went over the quota; and because of that, he couldn't continue synthesizing. and then at 11pm it started working again.
+
+There are words that he pronounces incorrectly, he pronounces them in English, instead of pronouncing them in Spanish; for example: basal. For it to be pronounced correctly, I have to write it with a short v: vasales; and there he pronounces it well.
+
+the lexicon/dictionary or pronunciation rules are impossible to use; For example, these voices mispronounce: Freud, Lacan.
+It is so complicated to change the pronunciation of a word, that I prefer to pronounce them wrong."	2	1	2	2	2
+Studio	It allows us to generate a certain amount of content that other services offer in a very expensive way	So far the text-to-speech generation is quite interesting, I tried it and I think it is an exceptional function for creating educational content for communities. like videos or presentations	5	0	0	0	18
+Studio	Speech Studio is free	New, more natural and less robotic voices	2	1	2	2	9
+Studio	stop asking	stop asking	4	0	0	0	18
+AzurePortal	its ease of use	so far nothing	4	0	0	0	15
+Studio	tts function	generate srt	2	1	11	16	18
+Studio	have a future. Voice aspect.	More Kazakh vocals	2	1	12	7	2
+AzurePortal	Voice service	More vocals	2	1	2	2	2
+AzurePortal		no fearful  voices inenglish	2	1	2	22	0
+Studio		very easy to use	5	0	0	0	0
+Studio	flexibility and SSML editing	Slow response times	6	1	9	6	2
+AzurePortal	Simply easy to use and stable.	"I would like something to be done about the inability to recognize phrases that include Japanese kanji with special pronunciations.
+For example, no matter how hard I try, I can't get it to recognize ``Kasane Teto.''"	2	1	2	2	15
+Studio	The sound quality, the choice of voices, the prices. The possibility of being able to listen before starting production.	Good morning. Your service is very good. Only small criticism is that sometimes the phonetic connection in the numbers (especially 8 and 10 pronounced hui and di) Otherwise price-wise, it is much more affordable than an eleven labs. Thank you.	5	0	0	0	2
+Studio		no auto language detection or setting	1	1	11	16	0
+Studio	Most of the voices sound great.	Adjust inflection of a certain word is a bit frustrating. Also, preview voices only available in the East and not the West is annoying.	2	1	2	2	2
+Studio	anything	terrible	4	0	0	0	18
+Studio	that exists	The system is slow and lacks server resources. I spend my time noticing its unavailability...	6	1	9	6	18
+AzurePortal	Voice	Hola	4	0	0	0	2
+Studio	natural sound	It is hoped that a new virtual character anchor and voice will be added.	2	1	2	2	2
+Studio	That the translation is 85% usable	recognize the names of municipalities, states, geographical names. Truncated Beginnings. . .	1	1	2	2	2
+Studio		A bit expensive……	8	15	17	9	0
+AzurePortal	I tried it on a recording from a mobile radio and was surprised how accurate it was.	Async callbacks seems a bit cumbersome when processing recordings. The quickstart documentation should at least have some suggestions about it. I ended up figuring it out with some help from Stack Overflow.	7	1	7	13	2
+Studio	the clarity of the voice	that the voices in Spanish become even closer to human voices, including intonation in different states of emotion, how to describe fear, crying, pain, sadness	2	1	2	2	2
+Studio	Natural and adjustable.	Nothing yet. Anticipate learning how to modulate the speech desired.	4	0	0	0	2
+Studio	Human speech is highly accurate and can be transcribed from audio. In multiple meetings, the accuracy decreases, but I think it can't be helped.	①If you have a choice of business field and specialty, I think they will suggest appropriate words. ② Since the sentences are written in kanji by force from the surrounding sentences, you can use hiragana if that is not possible. ③I would like to see the option of whether or not to delete filler words such as uh and uh.	1	1	11	16	2
+AzurePortal		Chinese translation is not accurate enough	1	1	2	2	0
+Studio	The quality of the voices, and the generous 500 000 free characters per month tts	The web UI can be a bit janky. Sometimes refusing to save, which stops me from exporting.	6	1	8	10	2
+AzurePortal	free	free	5	0	0	0	9
+Studio	sound	If you want something simpler, for voice, there is an APP	4	0	0	0	2
+Studio	speech synthesis	The guidance is a bit bad.	6	1	3	15	2
+Studio	Dubbing content can be customized and free of charge	Added singing function	4	0	0	0	9
+AzurePortal	Some new AI technology features		0	0	0	0	18
+AzurePortal	The reality of their voices		0	0	0	0	2
+Studio	The effect of speech synthesis is amazing		0	0	0	0	2
+Studio	can convert speech to thai somewhat accurate		0	0	0	0	2
+	The quality		0	0	0	0	2
+Studio	Ease of use		0	0	0	0	15
+Studio	The ease of UI navigation		0	0	0	0	15
+Studio	Good effect		0	0	0	0	2
+Studio	nice voices		0	0	0	0	2
+AzurePortal	That you have a free tier that I can use just for my friends. In case I need to use it on a more professional level I'll already have experience at it.		0	0	0	0	9
+AzurePortal	Functionality, although simple text to speech is missing		0	0	0	0	18
+Studio	Meet all needs! Especially Speech Studio, it is easy to operate.		0	0	0	0	15
+Studio	the voice		0	0	0	0	2
+AzurePortal	Voice realism		0	0	0	0	2
+Studio	convenient		0	0	0	0	15
+Studio	Language and speech types		0	0	0	0	2
+AzurePortal	Everything~		0	0	0	0	18
+AzurePortal	good voice		0	0	0	0	2
+	"Quality of voices
+Setup and configuration"		0	0	0	0	2
+AzurePortal	Rich presets, realistic sounds		0	0	0	0	2
+Studio	Transcript		0	0	0	0	18
+Studio	many		0	0	0	0	18
+AzurePortal	Where there are various types of voices		0	0	0	0	22
+AzurePortal	Everything. It's great.		0	0	0	0	18
+Studio	the accuracy when selecting a voice and being able to modify		0	0	0	0	2
+		accident bug	4	0	0	0	0
+		too slow to load	6	1	9	6	0
+		I haven't started exploring it yet, and I will make a fair evaluation after learning more about it.	4	0	0	0	0
+		I can’t set the tone and pitch to a constant baseline using code. I have to send the mark up each time and I wish I could just save the edited version from on here as a separate voice I use.	2	1	2	2	0
+		Improved (natural) voices	5	0	0	0	0
+Studio	Where Avatar Service provides explanations on your behalf	Nothing in particular.	4	0	0	0	18
+	Choices of voice talents	Recommended	5	0	0	0	2
+Studio	ease of use	SO FAR SO GOOD	5	0	0	0	15
+Studio	mega wow	would be nice if i can point it to a page and it can give me a list of discovered audio files with checkboxes to choose to use as source or not.	6	1	3	15	2
+Studio	Text-to-speech is effective	Mandarin characters in text-to-speech services sometimes have inaccurate pronunciation	2	1	2	2	2
+Studio	Each voice has different emotions to choose from, and users don’t need to adjust them themselves.	There are too few types of voices, only a few with perfect voices, girls (like Xiaoxiao) and young boys (Yunxi) who lack the sweet voices. Add a mode to import the manuscript of the speaker who has been prepared.	2	1	2	22	2
+AzurePortal		The steps are too cumbersome and too many. I hope they can be simplified.	8	1	3	15	0
+Studio		Text-to-speech, part of the speech is synthesized. I exported and converted it under the SO fee link for more than ten hours without success. I don’t know if it will be charged.	7	1	6	13	0
+AzurePortal		Often unresponsive	8	1	9	6	0
+Studio		when intoning parts of the text, if I want to change this intonation, I have to click on the exact same range of text, which is sometimes problematic	2	1	8	10	0
+AzurePortal		The creation is too complicated to get started, so why not just hang it out and let everyone subscribe and use it.	8	1	3	15	0
+AzurePortal		The sound is still a bit stiff, not user-friendly enough, and the price is too expensive	2	1	2	2	0
+AzurePortal	I haven't tried it yet	VERY COMPLICATED! I CAN'T UNDERSTAND ANYTHING!! PLEASE MAKE THIS PROGRAM ACCESSIBLE FOR PEOPLE WHO ARE NOT PROFESSIONELS LIKE US!	8	1	3	15	18
+Studio	Customization with phonemes is cool. A phoneme can be translated into another language.	Improvement in file handling. Copy with rename is missing.	6	1	11	16	2
+AzurePortal	practicality	Could create subtitles for videos in *.str file	1	1	11	16	2
+	Once you can get pass the initial set up it is easy to use	Kind of hard to get started without a walk through, I was lucky to find a video that could get me to use the service via YouTube. I feel this should have better instructions on how to start creating files, it is not very intuitive.	6	1	3	15	15
+Studio	there are options to choose from	It works very well	5	0	0	0	18
+Studio	Professional level	More virtual human images	6	1	11	16	2
+Studio	Strong function	Not very convenient, the learning time for the first contact is a bit long	6	1	3	15	2
+Studio	Powerful functions and realistic sound	The function is too complex, AI chatbot.	6	1	3	15	2
+AzurePortal		Complicated to set up. not intuitive	8	1	3	15	0
+AzurePortal		I don't understand how to use it	4	0	0	0	0
+AzurePortal		requires technical patience and knowledge to use it. very complex	8	1	3	15	0
+AzurePortal		Too cumbersome	8	1	3	15	0
+AzurePortal		There is no complete Chinese explanation	4	0	0	0	0
+AzurePortal		Hope to see more characters and more emotions	2	1	2	2	0
+Studio		It's frustrating the way resources are entered and created.	6	1	3	15	0
+AzurePortal		good	5	0	0	0	0
+Studio		How can I report something wrong with the TTS conversion results? For example, "佛" is pronounced as "fu 2" instead of "fo 2" when Voice profile "Yunze" of Mandarin Chinese is selected. I also came across quite a few similar errors before. (I tried the Pinyin correction tool in the sidebar, but it turns out to be the correct Pinyin but wrong pronuciation. Weird.) I hope to help improve it. But I don't know if there is a more convenient way of sending feedback to you. I hope there is a better and quicker way of submitting errors like this, so they get resolved more quickly. Thank you for your great products.	2	1	2	2	0
+AzurePortal	at the moment not much besides the fact i can use it	There is a lot going on maybe making it more simple for people that struggle with technology	8	1	3	15	18
+Studio	Easy to use	Much more characters and control over their expressions and movements	2	1	11	16	15
+Studio	It has good customization. I would appreciate if it has the option to download the transcription, I did not see it	It was not perfectly clear for me which scenario to choose when I simply want to upload a file and transcribe it.	7	1	6	13	2
+Studio	stop	stop asking for endless feedback , its so annoying	4	0	0	0	18
+AzurePortal	I think the $200 monthly limit is my favorite	very nice! !	5	0	0	0	9
+Studio	Text-to-speech is faster.	Wish there were more sound options. When downloading audio, you can download the corresponding subtitles	2	1	11	16	6
+Studio	like it all	No	5	0	0	0	18
+AzurePortal		I cannot understand how it works	7	1	6	13	0
+Studio		it is too complex and difficult to deploy the service	6	1	3	15	0
+AzurePortal		its not easy to understand	8	1	3	15	0
+AzurePortal		super hard to find what i need to do	8	1	3	15	0
+Studio		Too robotic.	6	1	3	15	0
+Studio		There is no server in China and it is slow to use.	6	1	9	0	0
+AzurePortal		The registration threshold is high, just use ordinary domestic debit cards.	8	1	3	15	0
+Studio		Because it is an integrated service, it is too complicated for people who only want to use a single function.	6	1	3	0	0
+AzurePortal		Let me finish the registration be fore the Feedback popup	8	1	3	15	0
+Studio		The sound quality when played with a good audio system is poor	2	1	2	2	0
+Studio		I wish all of the voices had different options, not just the default.	2	1	2	2	0
+Studio	Many things that can be configured	It is very good but they could improve the quality of the voices in Spanish to beat Elebenlabs	5	0	0	0	18
+Studio	quality voices. Intonation. Emotions. Ease of revision. A lot to love	it's great. Amazon polly has some voices for longer narrations that are nice. Something like that might help.	5	0	0	0	2
+Studio	Well, the realistic sound and the customization tools. For me the speech rate is very important.	"Sometimes you need to put emphasis on specific words like what we do when we talk. I think Azure has done quite well in getting the emphasis of words right. The best in the industry, in my opinion. However, it could become the wings for our dreams if the USER is given the complete control over what words should be pronounced with emphasis on. I mean, I'd like to customize it, and the current tools provided in Azure are far from enough.  
+Oh, don't forget to provide better control on pauses too. The AI does a good job in deciding where and how long the pauses are, but sometimes customization is really needed. 
+Thank you for your great products."	2	1	1	16	2
+AzurePortal	many choices	More diverse languages ​​and naturalness	2	1	2	2	22
+AzurePortal	Text-to-speech is currently the closest to human voice	I hope there will be some more scenes of chatting and poetry reciting in the Chinese section.	2	1	11	16	2
+Studio		Where's dark mode?	6	1	11	16	0
+AzurePortal		I'm still testing	4	0	0	0	0
+Studio	More Natural	Please add more voices selection	2	1	2	22	2
+AzurePortal	UI and free services	"Yes, the UI is very intuitive and clear
+I'd like to see more detailed documentation"	5	0	0	0	15
+Studio	all	You've done a lot of work. Thank you Microsoft for its contribution to the advancement of human science and technology.	5	0	0	0	18
+Studio	Simple and easy to use	Easy to use	5	0	0	0	15
+AzurePortal		Javascript for the browser examples	4	0	0	0	0
+AzurePortal		speed up internet	8	1	9	6	0
+AzurePortal		better voice intonations	2	1	2	2	0
+AzurePortal		The generated voice files are smaller than manual files	4	0	0	0	0
+AzurePortal	It's all good man	It's all good man!	5	0	0	0	18
+AzurePortal	Accurate and vivid pronunciation.	clone sound	4	0	0	0	2
+Studio	Open and free	Video import	4	0	0	0	9
+AzurePortal		Haven't had a chance to use it yet	4	0	0	0	0
+AzurePortal		text to avatar	4	0	0	0	0
+Studio		Easier to operate	5	0	0	0	0
+AzurePortal	Nothing since I didn't test it yet	I DID NOT HAVE TIME YET TO EVALUATE; WHY DO YOU ASK ME NOW? I can't recommend something that I havent fully tested yet. Ask users when they deploayed a few requests, lol. Didn't intend to scream at you, sorry.	4	0	0	0	18
+Studio	Fast, accurate recognition, beautiful synthetic voices. Now foreign words or Germanized English terms can also be pronounced correctly.	That I wasn't allowed to synthesize my voice ;)	2	1	6	13	2
+AzurePortal	voice over talent	Not much choices	4	0	0	0	2
+Studio	The voice quality is very good, it would be better if it was cheaper.	There should be an interface/or structured document to list all characters/voice characteristics/emotional characteristics. I don't know why I couldn't find it, or the entrance and help documents are not obvious.	7	1	7	13	2
+AzurePortal		Usability. In my opinion, this version is too unclear and difficult to understand.	8	1	3	15	0
+Studio	accurate	Surprise	5	0	0	0	2
+Studio	Audio	All good	5	0	0	0	2
+AzurePortal	Automatically	Thank you.	4	0	0	0	18
+AzurePortal	Easy of build and deploy	So fa, so good!	5	0	0	0	15
+Studio	Good for Education.. students love it	Love this option...its very advanced	5	0	0	0	18
+AzurePortal	I like the free use of some services especially for students.	"being able to use custom speech using personal use or email. 
+I would like to use for myself speaking because I have trouble speaking."	5	0	0	0	9
+AzurePortal	Voice quality	I haven't tested enough yet	4	0	0	0	2
+Studio	Nothing. It doesn't work	"It doesn't work. I am the administrator of the account, I created the Speech resource, but when I try to do the text to speech, it just says I don't have access to the voice list. Fix it. 
+Also, you don't support wake words in javascript, which is immensely frustrating, and will probably force us to go with another provider."	7	1	11	16	18
+Studio	That allows people to try your products	Excellent	5	0	0	0	18
+AzurePortal	Easy to use and quick to deploy resources	It's quick and easy to use and very easy to use; but it can be pricey. I hope I can customize my virtual image	2	1	11	16	15
+AzurePortal	Convenient	More concise function introduction	5	0	0	0	15
+Studio	natural voice	More diverse voices	5	0	0	0	2
+Studio		can't manage files although I'm the owner of the speech resource	8	1	3	15	0
+AzurePortal	Azure Speech to text Unable to contact server. StatusCode: 1006,	Azure Speech to text Unable to contact server. StatusCode: 1006,	8	1	9	6	18
+AzurePortal	nothing	select free tier select region resource set up only to discover this service is not available in this region. Now i am stuck with a free resource i cannot delete and switch to a region that has the service... gg. thanks.	8	1	3	15	18
+AzurePortal		differentiate the speakers, I don't know if it is available but I haven't been able to find it.	8	1	3	15	0
+Studio		"reading ""i.e.""  or lists doesn't work. 
+reading html doesn't work.
+highlighting orginal text in sync with audio missing."	2	1	8	10	0
+Studio	Everything	Google is the greatest.	4	0	0	0	18
+AzurePortal	I don't know... I DID NOT TRY IT YET	I am wondering why you're asking BEFORE I get to try it...	4	0	0	0	18
+AzurePortal	ok	good	5	0	0	0	18
+Studio	several editing options	voice is a bit robotic today there are ultrarealistic voices on the market....there are already several websites with ultrarealistic voices..look at https://play.ht/	2	1	2	2	15
+AzurePortal	Its own performance is okay	It's complicated to use	8	1	3	15	18
+AzurePortal	Powerful	There are too few sops, making it difficult for novices to get started.	7	1	3	15	18
+Studio	Multiple languages ​​to choose from and tones to choose from	I hope the AI ​​voice will be smoother and more natural.	2	1	2	2	7
+AzurePortal	Audio content creation	The access speed in China is too slow, especially at night, and text-to-speech often fails.	8	1	9	6	18
+Studio	Smooth voice	none	4	0	0	0	2
+AzurePortal		I don't appreciate services that ask me if I would recommend their stuff to friends 3 seconds after deploying my first one.	4	0	0	0	0
+Studio		I've been having problems with it today, and it doesn't work properly after repeated use.	6	1	8	10	0
+AzurePortal		Add emotions to Greek Language.	2	1	2	2	0
+Studio		It would be great if we could add a function that can change the pronunciation of specific words individually.	7	1	6	13	0
+Studio	Reliability	Being able to easily change the width of   the columns, e.g.   Task type, File, Status,  etc,	6	1	3	15	2
+Studio	There are many places to edit	More voices in Traditional Chinese or Taiwanese	2	1	2	22	18
+Studio	High accuracy	Grammar, word check	2	1	11	16	2
+Studio		There are still some errors in the intonation.	2	1	2	2	0
+AzurePortal		You make your services unnecessarily difficult.	8	1	3	15	0
+AzurePortal		Complex operation	8	1	3	15	0
+Studio		It seems cumbersome to set up	6	1	3	15	0
+AzurePortal		Entering the product interface is too complicated	8	1	3	15	0
+Studio		Voice type	4	0	0	0	0
+AzurePortal	It mostly works.	Frustrating to understand how to assign voices to text, they don't seem to be available in all Regions but there is no error just a silent fallback to the 'Jenny" voice.	7	1	6	13	18
+Studio	The amount of options provided by Azure	If find the structuring of Azura to be a bit over complicated	4	0	0	0	18
+AzurePortal	Transcribe has relatively high accuracy	Automatically select region	6	1	3	15	2
+Studio	trying to play and think of possible outcomes	more options of customizing the voices in the studio to try and get desired output and pick up the setting of the created voice from studio.	2	1	2	2	18
+Studio		I haven't even tried it yet and you have quizzed me three times.	8	1	3	15	0
+Studio	Text dubbing is powerful	In a mixed context of Chinese and English, the English abbreviations of some proper nouns are different from the way the words are read, so there is no need to spell them out. I hope that the English abbreviations can be more conveniently notated and read more naturally.	2	1	2	2	2
+Studio		I have an admin account - the only account in my organization, yet I can't access the service as I get "You do not have access level for this service." The entire onboarding and setup process has crashed at every stage so far, which has never happened while setting up AWS or Google developer consoles. Based on this experience it's impossible to recommend Azure.	8	1	3	15	0
+Studio		Too clumsy for a long text.	2	1	11	16	0
+AzurePortal		Dont know	4	0	0	0	0
+AzurePortal		keeps crashing needs to provide pictures for instructions	8	1	9	6	0
+AzurePortal	I love that there are so many free voices!	I would like to see long for recording for voices	2	1	11	16	9
+AzurePortal	Your voice to text service	They ask for too much information	8	1	3	15	2
+AzurePortal	The quality and variety of the TTS voices is great. Even though not all of them includes the same amount of expressions, sadly.	Pricing, too expensive. Paying for TTS while others are completely free seems like a bad move.	8	15	17	9	2
+	multiple language support, user friendly interface		0	0	0	0	7
+Studio	voice		0	0	0	0	2
+AzurePortal	human like voices		0	0	0	0	2
+AzurePortal	I have a voice.		0	0	0	0	18
+	All		0	0	0	0	18
+	tts		0	0	0	0	18
+AzurePortal	easy		0	0	0	0	15
+Studio	Good quality output		0	0	0	0	2
+AzurePortal	It's free.		0	0	0	0	9
+Studio	Convenient and meets my needs		0	0	0	0	15
+Studio	The quality of the sound		0	0	0	0	2
+AzurePortal	the control		0	0	0	0	18
+Studio	It type fast		0	0	0	0	6
+	speech studio		0	0	0	0	18
