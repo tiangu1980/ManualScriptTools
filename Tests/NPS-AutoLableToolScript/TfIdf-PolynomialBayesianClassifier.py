@@ -188,7 +188,7 @@ if __name__ == "__main__":
         
     merge=args.merge
     if not merge:
-        merge = "and"
+        merge = " and "
     if merge == "and":
         merge = " and "
     elif merge == "but":
