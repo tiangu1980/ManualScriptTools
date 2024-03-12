@@ -1,19 +1,15 @@
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
+import argparse
 import torch
 import torch.nn as nn
 import torch.optim as optim
 import torch.utils.data as data
+import os
 
-df = pd.read_excel('600233.xlsx')
-df = df.drop(columns=['Open', 'High', 'Low', 'Adj Close', 'Volume'])
-timeseries = df[["Close"]].values.astype('float32')
-
-# train-test split for time series
-train_size = int(len(timeseries) * 0.67)
-test_size = len(timeseries) - train_size
-train, test = timeseries[:train_size], timeseries[train_size:]
+# 1 new data relayed on 10 previous data
+lookback = 10
 
 def create_dataset(dataset, lookback):
     """Transform a time series into a prediction dataset
@@ -37,28 +33,6 @@ def create_dataset_single(dataset, count, idstart):
     X.append(feature)
     return torch.tensor(X)
 
-lookback = 10
-X_train, y_train = create_dataset(train, lookback=lookback)
-X_test, y_test = create_dataset(test, lookback=lookback)
-
-# 用从倒数第十一个开始的十个数据预测验证最后一个
-#mystart=len(test) - lookback - 1
-# 用与X_test相同的起始数据验证后续所有结果
-mystart=len(test) - lookback - 1 - 84
-print(f"mystart {mystart}")
-X_test_me = create_dataset_single(test, lookback, idstart=mystart)
-
-print(f"X_test    value {X_test}")
-print(f"X_test_me value {X_test_me}")
-#for i, value in enumerate(X_test):
-#    print(f"X_test {i} 的值: {value}")
-
-#print(f"X_test_me的 形状是： {X_test_me.shape} , 类型是： {type(X_test_me)} , 值是： {X_test_me}")
-#for i, value in enumerate(X_test_me):
-#    print(f"X_test_me {i}  形状是： {value.shape} ，类型是{type(value)} , 值是: {value} ")
-    
-#exit()
-
 class AirModel(nn.Module):
     def __init__(self):
         super().__init__()
@@ -69,87 +43,114 @@ class AirModel(nn.Module):
         x = self.linear(x)
         return x
 
-model = AirModel()
-optimizer = optim.Adam(model.parameters())
-loss_fn = nn.MSELoss()
-loader = data.DataLoader(data.TensorDataset(X_train, y_train), shuffle=True, batch_size=8)
-
-n_epochs = 200
-for epoch in range(n_epochs):
-    model.train()
-    for X_batch, y_batch in loader:
-        y_pred = model(X_batch)
-        loss = loss_fn(y_pred, y_batch)
-        optimizer.zero_grad()
-        loss.backward()
-        optimizer.step()
-    # Validation
-    if epoch % 100 != 0:
-        continue
-    model.eval()
-    with torch.no_grad():
-        y_pred = model(X_train)
-        train_rmse = np.sqrt(loss_fn(y_pred, y_train))
-        y_pred = model(X_test)
-        test_rmse = np.sqrt(loss_fn(y_pred, y_test))
-    print("Epoch %d: train RMSE %.4f, test RMSE %.4f" % (epoch, train_rmse, test_rmse))
-
-with torch.no_grad():
-    # shift train predictions for plotting
-    train_plot = np.ones_like(timeseries) * np.nan
-    y_pred = model(X_train)
-    y_pred = y_pred[:, -1, :]
-    train_plot[lookback:train_size] = model(X_train)[:, -1, :]
-    # shift test predictions for plotting
-    test_plot = np.ones_like(timeseries) * np.nan
-    test_plot[train_size+lookback:len(timeseries)] = model(X_test)[:, -1, :]
-
-print(f"test_plot 类型： {type(test_plot)}")
-#print(f"test_plot   值： {test_plot}")
-
-# 循环遍历 test_plot 数组中的每个元素，并打印出它们的值
-for i, value in enumerate(test_plot):
-    #print(f"test_plot {i} 的值: {value}")
-    print(f"test_plot {i} 的值: {value[0]}")
-
-#print(type(test_plot))
-#print(test_plot.shape)
-
-#my_Single_Result=model(X_test_me)
-#print(type(my_Single_Result))
-# my_Single_Result[:, -1, :][0][0] my_Single_Result最后一行数据，形状是(1,1)。加[0][0]得到它的纯值。
-#print(my_Single_Result)
-#print(my_Single_Result.shape)
-
-myvals = []
-my_plot = np.ones_like(timeseries) * np.nan
-with torch.no_grad():
-    for i in range(1, 286, 1):
-        print(i)
-        my_Single_Result=model(X_test_me)
-        my_single_value=my_Single_Result[:, -1, :][0][0]
-        #print(f"Pre {i} : {my_single_value}")
-        myvals.append(my_single_value)
-        # 删除第一个时间步的值
-        X_test_me = X_test_me[:, 1:, :]
+def train_model(timeseries, model_file, n_epochs=10):
+    X_train, y_train = create_dataset(timeseries, lookback=lookback)
     
-        # 添加预测值 my_single_value 到尾部
-        new_value = torch.tensor([[[my_single_value]]])
-        X_test_me = torch.cat((X_test_me, new_value), dim=1)
+    model = AirModel()
+    
+    # 初始化或加载模型
+    if os.path.exists(model_file):
+        model.load_state_dict(torch.load(model_file))
 
+    optimizer = optim.Adam(model.parameters())
+    loss_fn = nn.MSELoss()
+    loader = data.DataLoader(data.TensorDataset(X_train, y_train), shuffle=True, batch_size=8)
 
-for i in range(201, 286, 1):
-    my_plot[i] = myvals[i-201]
+    for epoch in range(n_epochs):
+        model.train()
+        for X_batch, y_batch in loader:
+            y_pred = model(X_batch)
+            loss = loss_fn(y_pred, y_batch)
+            optimizer.zero_grad()
+            loss.backward()
+            optimizer.step()
+        print(f"Epoch [{epoch + 1}/{n_epochs}], Loss: {loss.item()}")
+        # Validation
+        if epoch % 100 != 0:
+            continue
+        model.eval()
+        
+    torch.save(model.state_dict(), model_file)
+    print("Model trained and saved successfully.")
 
-for i, value in enumerate(my_plot):
-    #print(f"test_plot {i} 的值: {value}")
-    print(f"my_plot {i} 的值: {my_plot[i][0]}")
+def predict_model(timeseries, model_file, num_predictions):
+    model = AirModel()
+    model.load_state_dict(torch.load(model_file))
+    model.eval()
 
+    mystart=len(timeseries)-lookback
+    X_test_me = create_dataset_single(timeseries, lookback, idstart=mystart)
+    
+    print(f"Data start: {mystart}")
+    #print(f"timeseries: {timeseries[mystart:]}")
+    print(f"X_test_me: {X_test_me}")
+    
+    myvals = []
+    pred_length = num_predictions
+    with torch.no_grad():
+        for i in range(0, pred_length, 1):
+            my_Single_Result=model(X_test_me)
+            my_single_value=my_Single_Result[:, -1, :][0][0]
+            myvals.append(my_single_value)
+            print(f"Pre {i} : {my_single_value}")
+            
+            # 删除第一个时间步的值
+            X_test_me = X_test_me[:, 1:, :]
+    
+            # 添加预测值 my_single_value 到尾部
+            new_value = torch.tensor([[[my_single_value]]])
+            X_test_me = torch.cat((X_test_me, new_value), dim=1)
+    
+    return
 
-# plot
-plt.plot(timeseries, color="b")
-plt.plot(train_plot, c='r')
-plt.plot(test_plot, c='g')
-plt.plot(my_plot, c='k')
-plt.savefig('600233.png')
-plt.show()
+# 主函数
+def main():
+    # 解析命令行参数
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--m", help="Mode: train or work", required=True)
+    parser.add_argument("--f", help="Data file path", required=True)
+    parser.add_argument("--c", help="Column to train and predict", required=True)
+    parser.add_argument("--l", help="Number of head rows to keep in dataframe", type=int, required=True)
+    parser.add_argument("--p", help="Number p times of to train, or to predict", type=int, default=1)
+    parser.add_argument("--n", help="Model file name", required=False)
+    args = parser.parse_args()
+
+    # 读取数据文件
+    df = pd.read_excel(args.f)
+    
+    # 保留指定行数数据
+    if args.l < len(df) and args.l >0:
+        # 保留最后 l 行数据
+        # df = df.tail(args.l)
+        df = df.head(args.l)
+
+    # 保留指定列数据
+    # df = df.drop(columns=['Open', 'High', 'Low', 'Adj Close', 'Volume'])
+    df = df.loc[:, [args.c]]  
+    timeseries = df[[args.c]].values.astype('float32')
+
+    print(f"Data len: {len(timeseries)}")
+    #print(f"Data: {timeseries}")
+
+    if args.m == "train":
+        # 检查是否存在模型文件
+        if args.n:
+            train_model(timeseries, args.n, args.p)
+        else:
+            train_model(timeseries, None, args.p)
+    elif args.m == "work":
+        try:
+            # 检查是否存在模型文件
+            if args.n:
+                predict_model(timeseries, args.n, args.p)
+            else:
+                print("Model file not found. Please train the model first.")
+        except FileNotFoundError:
+            print("Model file not found. Please train the model first.")
+            return
+
+# python ExampleLSTM_Modified.py --m train --f 600233.xlsx --c Close --l 9999 --p 1 --n 600233_1K_Close.amod
+# python ExampleLSTM_Modified.py --m work  --f 600233.xlsx --c Close --l 9999 --p 5 --n 600233_1K_Close.amod
+
+if __name__ == "__main__":
+    main()
