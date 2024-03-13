@@ -7,6 +7,7 @@ import torch.nn as nn
 import torch.optim as optim
 import torch.utils.data as data
 import os
+import time
 
 # 1 new data relayed on 10 previous data
 lookback = 10
@@ -44,6 +45,10 @@ class AirModel(nn.Module):
         return x
 
 def train_model(timeseries, model_file, n_epochs=10):
+    if len(timeseries) < lookback + 1:
+        print("train_model : Time series is too short for the lookback period.")
+        return
+    
     X_train, y_train = create_dataset(timeseries, lookback=lookback)
     
     model = AirModel()
@@ -56,15 +61,24 @@ def train_model(timeseries, model_file, n_epochs=10):
     loss_fn = nn.MSELoss()
     loader = data.DataLoader(data.TensorDataset(X_train, y_train), shuffle=True, batch_size=8)
 
-    for epoch in range(n_epochs):
+    execution_time = 0
+    expect_time = 0
+    cost_time = 0
+    top_start_time = time.time()
+    for epoch in range(n_epochs):        
+        start_time = time.time()
         model.train()
         for X_batch, y_batch in loader:
             y_pred = model(X_batch)
             loss = loss_fn(y_pred, y_batch)
             optimizer.zero_grad()
             loss.backward()
-            optimizer.step()
-        print(f"Epoch [{epoch + 1}/{n_epochs}], Loss: {loss.item()}")
+            optimizer.step()        
+        end_time = time.time()
+        execution_time = end_time - start_time
+        cost_time = end_time - top_start_time
+        expect_time = cost_time/(epoch+1)*n_epochs
+        print(f"Epoch [{epoch + 1}/{n_epochs}], Loss: {loss.item()} , Execution time: {execution_time:.2f} s, Cost time: {cost_time:.2f} s, Expect time: {expect_time:.2f} s")
         # Validation
         if epoch % 100 != 0:
             continue
@@ -73,7 +87,11 @@ def train_model(timeseries, model_file, n_epochs=10):
     torch.save(model.state_dict(), model_file)
     print("Model trained and saved successfully.")
 
-def predict_model(timeseries, model_file, num_predictions):
+def predict_model(timeseries, model_file, num_predictions):    
+    if len(timeseries) < lookback:
+        print("predict_model : Time series is too short for the lookback period.")
+        return
+    
     model = AirModel()
     model.load_state_dict(torch.load(model_file))
     model.eval()
@@ -107,25 +125,29 @@ def predict_model(timeseries, model_file, num_predictions):
 def main():
     # 解析命令行参数
     parser = argparse.ArgumentParser()
-    parser.add_argument("--m", help="Mode: train or work", required=True)
-    parser.add_argument("--f", help="Data file path", required=True)
-    parser.add_argument("--c", help="Column to train and predict", required=True)
-    parser.add_argument("--l", help="Number of head rows to keep in dataframe", type=int, required=True)
-    parser.add_argument("--p", help="Number p times of to train, or to predict", type=int, default=1)
-    parser.add_argument("--n", help="Model file name", required=False)
+    parser.add_argument("--m", "--mode",      help="Mode: train or work",                       required=True)
+    parser.add_argument("--f", "--file",      help="Data file path",                            required=True)
+    parser.add_argument("--c", "--column",    help="Column to train and predict",               required=True)
+    parser.add_argument("--h", "--head",      help="Number of head rows to keep in dataframe",  type=int, required=True)
+    parser.add_argument("--e", "--end",       help="Number of end rows to keep in dataframe",   type=int, required=True)
+    parser.add_argument("--t", "--times",     help="Number run times of training, or predicts", type=int, default=1)
+    parser.add_argument("--n", "--namemodel", help="Model file name",                           required=True)
     args = parser.parse_args()
 
     # 读取数据文件
     df = pd.read_excel(args.f)
+       
+    # 保留指定行数数据
+    if args.h < len(df) and args.h > 0:
+        # 保留最开始 h 行数据
+        df = df.head(args.h)
     
     # 保留指定行数数据
-    if args.l < len(df) and args.l >0:
-        # 保留最后 l 行数据
-        # df = df.tail(args.l)
-        df = df.head(args.l)
+    if args.e < len(df) and args.e > 0:
+        # 保留最后 e 行数据
+        df = df.tail(args.e)
 
     # 保留指定列数据
-    # df = df.drop(columns=['Open', 'High', 'Low', 'Adj Close', 'Volume'])
     df = df.loc[:, [args.c]]  
     timeseries = df[[args.c]].values.astype('float32')
 
@@ -135,22 +157,22 @@ def main():
     if args.m == "train":
         # 检查是否存在模型文件
         if args.n:
-            train_model(timeseries, args.n, args.p)
+            train_model(timeseries, args.n, args.t)
         else:
-            train_model(timeseries, None, args.p)
+            train_model(timeseries, None, args.t)
     elif args.m == "work":
         try:
             # 检查是否存在模型文件
             if args.n:
-                predict_model(timeseries, args.n, args.p)
+                predict_model(timeseries, args.n, args.t)
             else:
                 print("Model file not found. Please train the model first.")
         except FileNotFoundError:
             print("Model file not found. Please train the model first.")
             return
 
-# python ExampleLSTM_Modified.py --m train --f 600233.xlsx --c Close --l 9999 --p 1 --n 600233_1K_Close.amod
-# python ExampleLSTM_Modified.py --m work  --f 600233.xlsx --c Close --l 9999 --p 5 --n 600233_1K_Close.amod
+# python ExampleLSTM_Modified.py --m train --f 600233.xlsx --c Close --h 9999 --e 9999 --t 1 --n 600233_1K_Close.amod
+# python ExampleLSTM_Modified.py --m work  --f 600233.xlsx --c Close --h 9999 --e 9999 --t 5 --n 600233_1K_Close.amod
 
 if __name__ == "__main__":
     main()
