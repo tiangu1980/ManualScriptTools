@@ -1,0 +1,12 @@
+python 1_Scenarios.py --f1 month.xlsx --s1 Sheet1 --f2 scenario.xlsx --s2 Customers --f3 2023-10.xlsx   --s3 Export
+python 1_Scenarios.py --f1 month.xlsx --s1 Sheet1 --f2 scenario.xlsx --s2 Customers --f3 2023-11.xlsx   --s3 Export
+python 1_Scenarios.py --f1 month.xlsx --s1 Sheet1 --f2 scenario.xlsx --s2 Customers --f3 2023-12.xlsx   --s3 Export
+python 1_Scenarios.py --f1 month.xlsx --s1 Sheet1 --f2 scenario.xlsx --s2 Customers --f3 2023-4.xlsx    --s3 Export
+python 1_Scenarios.py --f1 month.xlsx --s1 Sheet1 --f2 scenario.xlsx --s2 Customers --f3 2023-5.xlsx    --s3 Export
+python 1_Scenarios.py --f1 month.xlsx --s1 Sheet1 --f2 scenario.xlsx --s2 Customers --f3 2023-6.xlsx    --s3 Export
+python 1_Scenarios.py --f1 month.xlsx --s1 Sheet1 --f2 scenario.xlsx --s2 Customers --f3 2023-7.xlsx    --s3 Export
+python 1_Scenarios.py --f1 month.xlsx --s1 Sheet1 --f2 scenario.xlsx --s2 Customers --f3 2023-8.xlsx    --s3 Export
+python 1_Scenarios.py --f1 month.xlsx --s1 Sheet1 --f2 scenario.xlsx --s2 Customers --f3 2023-9.xlsx    --s3 Export
+python 1_Scenarios.py --f1 month.xlsx --s1 Sheet1 --f2 scenario.xlsx --s2 Customers --f3 2024-01.xlsx   --s3 Export
+python 1_Scenarios.py --f1 month.xlsx --s1 Sheet1 --f2 scenario.xlsx --s2 Customers --f3 2024-02.xlsx   --s3 Export
+python 1_Scenarios.py --f1 month.xlsx --s1 Sheet1 --f2 scenario.xlsx --s2 Customers --f3 2024-03.xlsx   --s3 Export

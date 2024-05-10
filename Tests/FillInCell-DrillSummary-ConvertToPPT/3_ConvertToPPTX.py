@@ -47,14 +47,17 @@ Font_Title_Bold = True
 RGB_Title_Text = RGBColor(255, 255, 255)  # 设置字体颜色为白色
 RGB_Title_Text_Mark_GOLD = RGBColor(255, 255, 0)  # 设置字体颜色为金黄色
 RGB_Title_Text_Mark_RED = RGBColor(255, 0, 0)  # 设置字体颜色为红色
-RGB_Title_Cell = RGBColor(29, 154, 120)  # 设置背景色为深绿色
+#RGB_Title_Cell = RGBColor(29, 154, 120)  # 设置背景色为深绿色
+RGB_Title_Cell = RGBColor(15, 158, 213)  # 设置背景色为蓝色
 
 Font_Content_Size = Pt(11)
 RGB_Content_Text = RGBColor(0, 0, 0)  # 设置字体颜色为黑色
 RGB_Content_Text_Mark_Negative = RGBColor(255, 0, 0)  # 设置字体颜色为红色
 RGB_Content_Text_Mark_Positive = RGBColor(0, 128, 0)  # 设置字体颜色为深绿色
-RGB_Content_Cell_LightGreen = RGBColor(204, 222, 214)  # 设置背景色为浅绿色
-RGB_Content_Cell_LightBlue = RGBColor(231, 239, 236)  # 设置背景色为浅蓝色
+#RGB_Content_Cell_LightGreen = RGBColor(204, 222, 214)  # 设置背景色为浅绿色
+RGB_Content_Cell_LightGreen = RGBColor(255, 255, 255)  # 设置背景色为浅绿色
+#RGB_Content_Cell_LightBlue = RGBColor(231, 239, 236)  # 设置背景色为浅蓝色
+RGB_Content_Cell_LightBlue = RGBColor(231, 240, 247)  # 设置背景色为浅蓝色
 
 title_MarkGold_Strs = ['MoM', 'YoY', '%', '@ Jan', '@ Feb', '@ Mar', '@ Apr', '@ May', '@ Jun', '@ Jul', '@ Aug', '@ Sep', '@ Oct', '@ Nov', '@ Dec']
 title_MarkRed_Strs = ['10']

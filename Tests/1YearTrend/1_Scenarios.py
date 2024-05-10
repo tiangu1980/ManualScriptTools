@@ -33,51 +33,11 @@ df1 = pd.read_excel(args.f1, sheet_name=args.s1)
 df2 = pd.read_excel(args.f2, sheet_name=args.s2)
 df3 = pd.read_excel(args.f3, sheet_name=args.s3)
 
-dfNameDict = pd.read_excel('NameMappingDict.xlsx', sheet_name='Sheet1')
-
 if 'Scenario_w/o Searched' not in df3.columns:
     df3.insert(loc=len(df3.columns), column='Scenario_w/o Searched', value='')
     
 if 'Sub Scenario_w/o Searched' not in df3.columns:
     df3.insert(loc=len(df3.columns), column='Sub Scenario_w/o Searched', value='')
-
-# 遍历 df3 的每一行， 使用scenario填充。
-for index, row in df3.iterrows():    
-    stringTemp1 = row['Scenario_w/o Searched']
-    stringTemp2 = row['Sub Scenario_w/o Searched']
-    if stringTemp1 is None or stringTemp1 == '' or stringTemp2 is None or stringTemp2 == '':
-        # 找到匹配行
-        matching_rows = df2[df2['Cloud Customer GUID'] == row['Cloud Customer GUID']]
-        if not matching_rows.empty:
-            # 如果有多个匹配行，按照行号从大到小排序
-            matching_rows.sort_index(ascending=False, inplace=True)
-            # 找到第一个 'SpeechL1Scenario' 列的值不为空的行
-            SpeechL1Scenario_values = matching_rows['SpeechL1Scenario'].dropna()
-            # 找到第一个 'SpeechL2Scenario' 列的值不为空的行
-            SpeechL2Scenario_values = matching_rows['SpeechL2Scenario'].dropna()
-            if not SpeechL1Scenario_values.empty:
-                df3.at[index, 'Scenario_w/o Searched'] = SpeechL1Scenario_values.iloc[0]
-            if not SpeechL2Scenario_values.empty:
-                df3.at[index, 'Sub Scenario_w/o Searched'] = SpeechL2Scenario_values.iloc[0]
-
-# 遍历 df3 的每一行， 使用scenario填充。
-for index, row in df3.iterrows():    
-    stringTemp1 = row['Scenario_w/o Searched']
-    stringTemp2 = row['Sub Scenario_w/o Searched']
-    if stringTemp1 is None or stringTemp1 == '' or stringTemp2 is None or stringTemp2 == '':
-        # 找到匹配行
-        matching_rows = df2[df2['Customer Name'] == row['Name']]
-        if not matching_rows.empty:
-            # 如果有多个匹配行，按照行号从大到小排序
-            matching_rows.sort_index(ascending=False, inplace=True)
-            # 找到第一个 'SpeechL1Scenario' 列的值不为空的行
-            SpeechL1Scenario_values = matching_rows['SpeechL1Scenario'].dropna()
-            # 找到第一个 'SpeechL2Scenario' 列的值不为空的行
-            SpeechL2Scenario_values = matching_rows['SpeechL2Scenario'].dropna()
-            if not SpeechL1Scenario_values.empty:
-                df3.at[index, 'Scenario_w/o Searched'] = SpeechL1Scenario_values.iloc[0]
-            if not SpeechL2Scenario_values.empty:
-                df3.at[index, 'Sub Scenario_w/o Searched'] = SpeechL2Scenario_values.iloc[0]
 
 # 遍历 df3 的每一行， 使用month填充。
 for index, row in df3.iterrows():
@@ -97,26 +57,26 @@ for index, row in df3.iterrows():
                 df3.at[index, 'Scenario_w/o Searched'] = SpeechL1Scenario_values.iloc[0]
             if not SpeechL2Scenario_values.empty:
                 df3.at[index, 'Sub Scenario_w/o Searched'] = SpeechL2Scenario_values.iloc[0]
-                
-# 遍历 df3 的每一行， 使用dfNameDict替换Name
-for index, row in df3.iterrows(): 
-    matching_rows = dfNameDict[dfNameDict['Name'] == row['Name']]
-    if not matching_rows.empty:
-        # 如果有多个匹配行，按照行号从大到小排序
-        matching_rows.sort_index(ascending=False, inplace=True)
-        # 找到第一个 'Friendly Name' 列的值不为空的行
-        findlyName_value = matching_rows['Friendly Name'].dropna()
-        if not findlyName_value.empty:
-            df3.at[index, 'Name'] = findlyName_value.iloc[0]
-for index, row in df3.iterrows(): 
-    matching_rows = dfNameDict[dfNameDict['Cloud Customer GUID'] == row['Cloud Customer GUID']]
-    if not matching_rows.empty:
-        # 如果有多个匹配行，按照行号从大到小排序
-        matching_rows.sort_index(ascending=False, inplace=True)
-        # 找到第一个 'Friendly Name' 列的值不为空的行
-        findlyName_value = matching_rows['Friendly Name'].dropna()
-        if not findlyName_value.empty:
-            df3.at[index, 'Name'] = findlyName_value.iloc[0]
+
+
+# 遍历 df3 的每一行， 使用scenario填充。
+for index, row in df3.iterrows():    
+    stringTemp1 = row['Scenario_w/o Searched']
+    stringTemp2 = row['Sub Scenario_w/o Searched']
+    if stringTemp1 is None or stringTemp1 == '' or stringTemp2 is None or stringTemp2 == '':
+        # 找到匹配行
+        matching_rows = df2[df2['Customer Name'] == row['Name']]
+        if not matching_rows.empty:
+            # 如果有多个匹配行，按照行号从大到小排序
+            matching_rows.sort_index(ascending=False, inplace=True)
+            # 找到第一个 'SpeechL1Scenario' 列的值不为空的行
+            SpeechL1Scenario_values = matching_rows['SpeechL1Scenario'].dropna()
+            # 找到第一个 'SpeechL2Scenario' 列的值不为空的行
+            SpeechL2Scenario_values = matching_rows['SpeechL2Scenario'].dropna()
+            if not SpeechL1Scenario_values.empty:
+                df3.at[index, 'Scenario_w/o Searched'] = SpeechL1Scenario_values.iloc[0]
+            if not SpeechL2Scenario_values.empty:
+                df3.at[index, 'Sub Scenario_w/o Searched'] = SpeechL2Scenario_values.iloc[0]
 
 if df3.iloc[-1, 0].startswith('Applied filters:'):
     df3 = df3.iloc[:-1]
