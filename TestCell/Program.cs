@@ -88,7 +88,7 @@ namespace ConsoleApp1
                     Random rnd = new Random();
 
                     // Only 1/2 of the map has food
-                    int food = rnd.Next(0, 2) == 0 ? 1 : 0;
+                    int food = rnd.Next(0, 2) == 0 ? 2 : 0;
                     map[i, j] = food; 
                 }
             }
@@ -97,9 +97,9 @@ namespace ConsoleApp1
 
     public class Game
     {
-        private CellMap cellMap;
-        private List<cell> cells;
-        private string[,] view;
+        internal CellMap cellMap;
+        internal List<cell> cells;
+        public volatile static int livingCellCount = 0;
 
         private Dictionary<Tuple<int, int>, List<cell>> positionToCells= new Dictionary<Tuple<int, int>, List<cell>>();
 
@@ -107,6 +107,7 @@ namespace ConsoleApp1
         {
             this.cellMap = cellMap; // Ensure cellMap is assigned to handle non-nullable field warning
             this.cells = cells;
+            livingCellCount = cells.Count;
         }
 
         // Process cell actions and update cellMap
@@ -119,17 +120,15 @@ namespace ConsoleApp1
             foreach (cell cell in cells)
             {
                 int action = cell.DoAction();
-                cell.full--;
-                if (cell.full <= 0)
-                {
+                if (cell.full > 0)
+                    cell.full--;
+                else
                     cell.hp--;
-                }
                 switch (action)
                 {
                     case 1: // y++
                         if (cell.y + 1 < cellMap.map.GetLength(1))
                         {
-                            cell.full--;
                             cell.y++;
                             if (positionToCells.ContainsKey(new Tuple<int, int>(cell.x, cell.y)))
                             {
@@ -144,7 +143,6 @@ namespace ConsoleApp1
                     case 2: // y--
                         if (cell.y - 1 >= 0)
                         {
-                            cell.full--;
                             cell.y--;
                             if (positionToCells.ContainsKey(new Tuple<int, int>(cell.x, cell.y)))
                             {
@@ -159,7 +157,6 @@ namespace ConsoleApp1
                     case 3: // x++
                         if (cell.x + 1 < cellMap.map.GetLength(0))
                         {
-                            cell.full--;
                             cell.x++;
                             if (positionToCells.ContainsKey(new Tuple<int, int>(cell.x, cell.y)))
                             {
@@ -174,7 +171,6 @@ namespace ConsoleApp1
                     case 4: // x--
                         if (cell.x - 1 >= 0)
                         {
-                            cell.full--;
                             cell.x--;
                             if (positionToCells.ContainsKey(new Tuple<int, int>(cell.x, cell.y)))
                             {
@@ -187,6 +183,8 @@ namespace ConsoleApp1
                         }
                         break;
                     default:
+                        if (cell.hp < 9)
+                            cell.hp++;
                         if (positionToCells.ContainsKey(new Tuple<int, int>(cell.x, cell.y)))
                         {
                             positionToCells[new Tuple<int, int>(cell.x, cell.y)].Add(cell);
@@ -207,6 +205,15 @@ namespace ConsoleApp1
                     livingCell = cells.Select(c => c).OrderByDescending(c => c.hp).First();
                     livingCell.hp = livingCell.hp = (byte)(cells.Sum(c => c.hp) / 2);
                     livingCell.full = livingCell.full = (byte)(cells.Sum(c => c.full) / 2);
+
+                    if (livingCell.full > 9)
+                    {
+                        livingCell.full = 9;
+                    }
+                    if (livingCell.hp > 9)
+                    {
+                        livingCell.hp = 9;
+                    }
                 }
                 else
                 {
@@ -215,38 +222,13 @@ namespace ConsoleApp1
 
                 nextCells.Add(livingCell);
             }
-            this.cells.Clear();
-            this.cells = nextCells;
-        }
 
-        static string ConcatenateArray(string[,] array)
-        {
-            int rows = array.GetLength(0);
-            int cols = array.GetLength(1);
-            string result = "";
-
-            for (int i = 0; i < rows; i++)
+            foreach (cell cell in nextCells)
             {
-                for (int j = 0; j < cols; j++)
-                {
-                    result += array[i, j];
-                }
-            }
-
-            // 去掉最后一个多余的空格
-            return result;
-        }
-
-        public string RefreshView()
-        {
-            // Merge cellMap and cells into view
-            view = new string[cellMap.map.GetLength(0) + 1, cellMap.map.GetLength(1) + 1];
-
-            foreach (cell cell in cells)
-            {
-                if(cellMap.map[cell.x, cell.y] > 0)
+                if (cellMap.map[cell.x, cell.y] > 0)
                 {
                     cell.full += (byte)cellMap.map[cell.x, cell.y];
+                    cell.hp += (byte)cellMap.map[cell.x, cell.y];
                     if (cell.full > 9)
                     {
                         cell.full = 9;
@@ -257,35 +239,12 @@ namespace ConsoleApp1
                     }
                     cellMap.map[cell.x, cell.y] = 0;
                 }
-                view[cell.x, cell.y] = "C" + Convert.ToString(cell.hp); // Placeholder for cell
             }
+            nextCells.RemoveAll(c => c.hp <= 0);
 
-            for (int i = 0; i < cellMap.map.GetLength(0); i++)
-            {
-                for (int j = 0; j < cellMap.map.GetLength(1) + 1; j++)
-                {
-                    if (j == view.GetLength(1) - 1)
-                    {
-                        view[i, j] = "\r\n"; // Correctly place newline character at the end of each row
-                    }
-                    else if (string.IsNullOrWhiteSpace(view[i, j])) // When there is no cell at the current position
-                    {
-                        if ((cellMap.map[i, j] > 0))
-                        {
-                            view[i, j] = " " + Convert.ToString(cellMap.map[i, j]); // Placeholder for food
-                        }
-                        else
-                        {
-                            view[i, j] = "  "; // Placeholder for empty cell
-                        }
-                    }
-                    else // When there is a cell at the current position
-                    {
-                        // Do nothing
-                    }
-                }
-            }
-            return ConcatenateArray(view);
+            this.cells.Clear();
+            this.cells = nextCells;
+            livingCellCount = cells.Count;
         }
     }
 
@@ -303,12 +262,23 @@ namespace ConsoleApp1
 
             Game mv = new Game(cellMap, cells);
 
+            int time = 0;
+            int duration = 50;
             while (true)
             {
-                Console.Clear();
                 mv.DoGameStep();
-                Console.WriteLine(mv.RefreshView());
-                System.Threading.Thread.Sleep(50);
+                GameUI.RefreshView(mv);
+                Console.WriteLine(time);
+                time++;
+                if (Game.livingCellCount == 1)
+                {
+                    duration = 1000;
+                }
+                System.Threading.Thread.Sleep(duration);
+                if (Game.livingCellCount == 0)
+                {
+                    break;
+                }
             }
         }
     }
