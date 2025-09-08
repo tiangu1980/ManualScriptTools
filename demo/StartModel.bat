@@ -1,0 +1,2 @@
+:: pip install https://gradio-pypi-previews.s3.amazonaws.com/4814351d6866e31cdff70ebd87823e6fa10dcf2b/gradio-5.23.3-py3-none-any.whl
+python demo/gradio_demo.py --model_path microsoft/VibeVoice-1.5B --share
