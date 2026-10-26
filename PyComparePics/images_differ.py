@@ -1,4 +1,3 @@
-
 from PIL import Image
 import numpy as np
 import argparse
@@ -8,6 +7,11 @@ import time
 # python .\images_differ.py 16_1.bmp 16_2.bmp --separator 0 0 0
 
 # -*- coding: utf-8 -*-
+
+duplicateLines = 5
+matchRate = 0.90
+blockMissLines = 2
+blockCompareLines = 6
 
 def load_image_as_bitmap(image_path, mode='RGB'):
     img = Image.open(image_path)
@@ -83,10 +87,42 @@ def find_differences(pixelsL, pixelsR):
     
     print("不匹配行信息L:", ListDiffL)
     print("不匹配行信息R:", ListDiffR)
-    print("匹配行信息:", listSame)
+    print("匹配行信息:", listSame)    
     
     # 输出差异PNG图片
     OutputMergedDiffPng(listSame, ListDiffL, ListDiffR, pixelsL, pixelsR)
+    
+    # 分析左侧图片重复行
+    print("\n=== 左侧图片重复行分析 ===")
+    print(f"左侧图片行数: {pixelsL.shape[0]}, 列数: {pixelsL.shape[1]}, 通道数: {pixelsL.shape[2] if len(pixelsL.shape) == 3 else 1}")
+    duplicate_rows_L = [item for item in analyze_duplicate_rows(pixelsL) if item[0] > duplicateLines]  # 只保留出现次数大于duplicateLines的行
+    #for i, (count, row_data) in enumerate(duplicate_rows_L):
+    #    print(f"第{i+1}种行内容: 出现{count}次, 行内容: {row_data.tobytes()}")  # 输出行内容的字节串表示
+    
+    # 分解左侧图片
+    if duplicate_rows_L:
+        contents_L, noContents_L = decompose_pixels_by_duplicate_rows(duplicate_rows_L, pixelsL)
+        print(f"左侧图片分解结果: {len(contents_L)}个内容块, {len(noContents_L)}个分隔块")
+        for i, (start_row, sub_matrix) in enumerate(contents_L):
+            print(f"  内容块{i+1}: 起始行{start_row}, 大小{sub_matrix.shape}")
+        for i, (start_row, sub_matrix) in enumerate(noContents_L):
+            print(f"  分隔块{i+1}: 起始行{start_row}, 大小{sub_matrix.shape}")
+    
+    # 分析右侧图片重复行
+    print("\n=== 右侧图片重复行分析 ===")
+    print(f"右侧图片行数: {pixelsR.shape[0]}, 列数: {pixelsR.shape[1]}, 通道数: {pixelsR.shape[2] if len(pixelsR.shape) == 3 else 1}")
+    duplicate_rows_R = [item for item in analyze_duplicate_rows(pixelsR) if item[0] > duplicateLines]  # 只保留出现次数大于duplicateLines的行
+    #for i, (count, row_data) in enumerate(duplicate_rows_R):
+    #    print(f"第{i+1}种行内容: 出现{count}次, 行内容: {row_data.tobytes()}") 
+    
+    # 分解右侧图片
+    if duplicate_rows_R:
+        contents_R, noContents_R = decompose_pixels_by_duplicate_rows(duplicate_rows_R, pixelsR)
+        print(f"右侧图片分解结果: {len(contents_R)}个内容块, {len(noContents_R)}个分隔块")
+        for i, (start_row, sub_matrix) in enumerate(contents_R):
+            print(f"  内容块{i+1}: 起始行{start_row}, 大小{sub_matrix.shape}")
+        for i, (start_row, sub_matrix) in enumerate(noContents_R):
+            print(f"  分隔块{i+1}: 起始行{start_row}, 大小{sub_matrix.shape}") 
     
 # OutputMergedDiffPng : 输出合并后的png图片
 # 从 pixelsL 或者 pixelsR 得到图片的宽度 width。
@@ -451,6 +487,105 @@ def generate_line_hashes(pixel_array):
         row_hash = hashlib.sha256(pixel_array[y].tobytes()).hexdigest()
         result.append([y, row_hash])
     return result
+
+def analyze_duplicate_rows(pixels):
+    """
+    分析像素矩阵中内容重复的行的数量
+    :param pixels: 像素矩阵 (height, width, channels)
+    :return: [[数量, 行内容], ...] 按数量从大到小排序
+    """
+    if len(pixels.shape) == 2:
+        # 灰度图像，添加一个维度
+        pixels = pixels[:, :, np.newaxis]
+    
+    # 用于存储每种行内容的计数
+    row_count_dict = {}
+    
+    # 遍历每一行
+    for row_idx in range(pixels.shape[0]):
+        # 获取当前行的像素数据
+        row_data = pixels[row_idx]
+        
+        # 将行数据转换为字节串作为字典的键（因为numpy数组不能直接作为字典键）
+        row_key = row_data.tobytes()
+        
+        # 统计计数
+        if row_key in row_count_dict:
+            row_count_dict[row_key]['count'] += 1
+        else:
+            row_count_dict[row_key] = {
+                'count': 1,
+                'row_data': row_data.copy()
+            }
+    
+    # 转换为列表格式 [[数量, 行内容], ...]
+    result = []
+    for row_key, row_info in row_count_dict.items():
+        result.append([row_info['count'], row_info['row_data']])
+    
+    # 按数量从大到小排序
+    result.sort(key=lambda x: x[0], reverse=True)
+    
+    return result
+
+def decompose_pixels_by_duplicate_rows(duplicate_rows, pixels):
+    """
+    使用重复行数据将像素矩阵分解成内容块和分隔块
+    :param duplicate_rows: 重复行分析结果 [[数量, 行内容], ...]
+    :param pixels: 像素矩阵 (height, width, channels)
+    :return: (contents, noContents) 其中：
+             contents = [[起始行号, 子矩阵], ...] 非重复行组成的内容块
+             noContents = [[起始行号, 子矩阵], ...] 重复行组成的分隔块
+    """
+    if len(pixels.shape) == 2:
+        # 灰度图像，添加一个维度
+        pixels = pixels[:, :, np.newaxis]
+    
+    # 创建重复行内容的字典，用于快速查找
+    duplicate_row_dict = {}
+    for count, row_data in duplicate_rows:
+        row_key = row_data.tobytes()
+        duplicate_row_dict[row_key] = True
+    
+    # 标记每一行是否为重复行
+    is_duplicate_row = []
+    for row_idx in range(pixels.shape[0]):
+        row_data = pixels[row_idx]
+        row_key = row_data.tobytes()
+        is_duplicate_row.append(row_key in duplicate_row_dict)
+    
+    # 分解成连续的块
+    contents = []      # 非重复行块（内容块）
+    noContents = []    # 重复行块（分隔块）
+    
+    current_start = 0
+    current_is_duplicate = is_duplicate_row[0] if len(is_duplicate_row) > 0 else False
+    
+    for row_idx in range(1, len(is_duplicate_row)):
+        # 如果当前行的类型与前一个块不同，结束当前块
+        if is_duplicate_row[row_idx] != current_is_duplicate:
+            # 提取当前块的子矩阵
+            sub_matrix = pixels[current_start:row_idx]
+            
+            # 根据块类型添加到相应列表
+            if current_is_duplicate:
+                noContents.append([current_start, sub_matrix])
+            else:
+                contents.append([current_start, sub_matrix])
+            
+            # 开始新的块
+            current_start = row_idx
+            current_is_duplicate = is_duplicate_row[row_idx]
+    
+    # 处理最后一个块
+    if len(is_duplicate_row) > 0:
+        sub_matrix = pixels[current_start:]
+        if current_is_duplicate:
+            noContents.append([current_start, sub_matrix])
+        else:
+            contents.append([current_start, sub_matrix])
+    
+    return contents, noContents
 
 def find_longest_hash_match(lst_l, lst_r):
     """
